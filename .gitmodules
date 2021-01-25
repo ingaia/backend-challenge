@@ -1,0 +1,6 @@
+[submodule "nestjs-heroku-sample1"]
+	path = nestjs-heroku-sample1
+	url = https://github.com/Badaueba/nestjs-heroku-sample1
+[submodule "nest-js-heroku-sample2"]
+	path = nest-js-heroku-sample2
+	url = https://github.com/Badaueba/nest-js-heroku-sample2
