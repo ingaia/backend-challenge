@@ -1,47 +1,51 @@
-# inGaia - Back-end Developer
+# Sample Nestjs + Docker containers + Heroku Deploy
 
-- Desenvolver 2 APIs
-    - API1 - Retorna o valor fixo do metro quadrado
-    - API2 - Recebe quantidade de metros quadrados e calcula o valor do imóvel
-## Requisitos
+##### Content:
 
-- Seu serviço deve ser acessível através de uma API REST
+- <b>[nestjs-heroku-sample1](https://nxe-api1.herokuapp.com):</b>
+  nestjs api to provide basic resources for other apis
+  [https://nxe-api1.herokuapp.com](https://nxe-api1.herokuapp.com)
+- <b>[nest-js-heroku-sample2](https://nxe-api2.herokuapp.com):</b>
+  nestjs api to access nestjs-heroku-sample1, calculate service and return data
+  [https://nxe-api2.herokuapp.com](https://nxe-api1.herokuapp.com)
 
-- Você deverá desenvolver 2 APIs
+##### Dependenicies:
 
-- Seu serviço deve validar o valor de entrada
+- Docker version 19.03.12, build 48a66213fe
 
-- O quantidade de metros quadrados deve estar entre 10 e 10.000
+##### Run:
 
-- Apesar do valor do metro quadrado ser fixo, desenvolva como se esse valor tivesse vindo de um base de dados
+1.  clone the repo and the api submodules.
 
-- O valor do métro quadrado dever ser obtido chamando a API1
+```
 
-- Disponibilizar os serviços Online
+ git clone https://github.com/Badaueba/backend-challenge.git
 
+ cd backend-challenge
 
-## O que gostaríamos de ver nos microserviços
-- Boas práticas de desenvolvimento
-- Padrões de codificação 
-- Execução utilizando docker
-- Readme bem estruturado explicando a arquitetura e instruções para subir os microserviços
-- Código no GitHub, demonstrando conhecimento em sua utilização
-- Swagger
-- Teste unitário e teste de integração
-- CI/CD
+ git submodule init
 
+ git submodule update
 
-## Detalhes
+```
 
-Preferencialmente gostaríamos de ver seu código na linguagem da descrição da vaga, porém você pode utilizar qualquer linguagem, ferramenta, framework ou biblioteca com as quais se sentir confortável ou julgar necessário.
+2. Install yarn dependencies for the microservices
 
-Caso tenha quaisquer dúvidas sobre este teste, a qualquer momento, sinta-se à vontade para entrar em contato através do e-mail engineering-tests@ingaia.com.br
+```
 
-Suba seu código em um repositório do GitHub e, ao final, compartilhe com o usuário: engenhariaingaia
+cd nest-js-heroku-sample2
+yarn install
 
-## Dicas importantes:
+cd nestjs-heroku-sample1
+yarn install
 
-- Para deixar seu serviço disponível online, uma boa dica é o [Heroku](https://www.heroku.com/). Ele permite que você publique algumas aplicações gratuitamente.
+```
 
-- Não se esqueça de disponibilizar o link do repositório e o link da API online.
+3 . Start the workspace containers
 
+```
+docker-compose up --build
+
+```
+
+4 . Open up your web browser at localhost:3000

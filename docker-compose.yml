@@ -1,0 +1,38 @@
+version: "3"
+services:
+  api1:
+    container_name: api1
+    image: api1:${TAG:-latest}
+    build:
+      context: ./nestjs-heroku-sample1
+      dockerfile: Dockerfile
+    command: sh -c "yarn start"
+    ports:
+      - 9000:9000
+    expose:
+      - 9000
+    volumes:
+      - ./nestjs-heroku-sample1/:/api1
+
+    environment:
+      NAME: ${API1_NAME}
+      PORT: ${API1_PORT}
+
+  api2:
+    image: api2:${TAG:-latest}
+    build:
+      context: ./nest-js-heroku-sample2
+      dockerfile: Dockerfile
+    command: sh -c "yarn start"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./nest-js-heroku-sample2/:/api2
+    depends_on:
+      - api1
+    links:
+      - api1
+    environment:
+      NAME: ${API2_NAME}
+      PORT: ${API2_PORT}
+      API1_HOST: ${API1_HOST}
